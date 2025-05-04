@@ -1,4 +1,5 @@
 import 'package:chat/constants/constants.dart';
+import 'package:chat/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../services/assets_manager.dart';
@@ -45,11 +46,12 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Flexible(
               child: ListView.builder(
-                itemCount: 2,
+                itemCount: 6,
                 itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("hehehe"),
+                  return ChatWidget(
+                    msg: chatMessages[index]["msg"].toString(),
+                    chatIndex:
+                        int.parse(chatMessages[index]["chatIndex"].toString()),
                   );
                 },
               ),
