@@ -29,7 +29,16 @@ class ChatWidget extends StatelessWidget {
                 SizedBox(
                   width: 8,
                 ),
-                Expanded(child: TextWidget(label: msg))
+                Expanded(child: TextWidget(label: msg)),
+                chatIndex == 0 ? const SizedBox.shrink() :   Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: const[
+                    Icon(Icons.thumb_up_outlined,color: Colors.white),
+                    SizedBox(width: 5,),
+                    Icon(Icons.thumb_down_outlined,color: Colors.white),
+                  ],
+                ),
               ],
             ),
           ),

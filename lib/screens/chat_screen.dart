@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:chat/constants/constants.dart';
+import 'package:chat/widgets/Text_widget.dart';
 import 'package:chat/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../services/assets_manager.dart';
+import '../services/services.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -35,6 +39,17 @@ class _ChatScreenState extends State<ChatScreen> {
           "Chat GPT",
           style: TextStyle(color: Colors.white),
         ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+             await Services.showModelSheet(context: context);
+            },
+            icon: Icon(
+              Icons.more_vert_rounded,
+              color: Colors.white,
+            ),
+          )
+        ],
         elevation: 2,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
