@@ -1,6 +1,10 @@
-import 'package:chat/screens/chat_screen.dart';
+
+import 'package:chat/provider/chats_provider.dart';
+import 'package:chat/provider/models_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'constants/constants.dart';
+import 'screens/chat_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,16 +16,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          scaffoldBackgroundColor: scaffoldBackgroundColor,
-          appBarTheme: AppBarTheme(
-            color: cardColor,
-          )),
-      home: const ChatScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ModelsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ChatProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter ChatBOT',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            scaffoldBackgroundColor: scaffoldBackgroundColor,
+            appBarTheme: AppBarTheme(
+              color: cardColor,
+            )),
+        home: const ChatScreen(),
+      ),
     );
   }
 }
-
